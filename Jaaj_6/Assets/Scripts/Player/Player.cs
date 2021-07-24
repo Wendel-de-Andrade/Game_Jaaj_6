@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public float speed;
     private Animator anim;
+    public GameObject tumulo;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        Debug.Log(speed);
+    
     }
     
     void Move()
@@ -48,7 +51,12 @@ public class Player : MonoBehaviour
 
         anim.SetBool("Walk", false);
         
-        }
-
+        }      
+        
     }
+
+
+
+
+
 }
