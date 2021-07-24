@@ -4,31 +4,43 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private Rigidbody2D rig;
     public float speed;
     private Animator anim;
+    private Animator aanimTumulo;
     public GameObject tumulo;
 
     // Start is called before the first frame update
     void Start()
     {
+        aanimTumulo = tumulo.GetComponent<Animator>();
         anim = GetComponent<Animator>();
+        rig = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
-        Debug.Log(speed);
-    
+        if (speed == 0)
+        {
+            NaoTrocarAngulo();
+        }
+        else if (speed >= 0.1)
+        {
+            Move();
+        }
+
     }
     
-    void Move()
+    public void Move()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-        transform.position += movement * Time.deltaTime * speed;
+        //Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+        float movement = Input.GetAxis("Horizontal");
+        rig.velocity = new Vector3(movement * speed, rig.velocity.y);
+        //transform.position += movement * Time.deltaTime * speed;
          
         //direita   
-        if (Input.GetAxis("Horizontal") > 0f)
+        if (movement > 0f)
         {
 
         anim.SetBool("Walk", true);
@@ -37,7 +49,7 @@ public class Player : MonoBehaviour
         }
 
         //esquerda
-        if (Input.GetAxis("Horizontal") < 0f)
+        if (movement < 0f)
         {
 
         anim.SetBool("Walk", true);
@@ -46,13 +58,28 @@ public class Player : MonoBehaviour
         }
 
         //parado
-        if (Input.GetAxis("Horizontal") == 0f)
+        if (movement == 0f)
         {
 
         anim.SetBool("Walk", false);
         
-        }      
+        }  
         
+    }
+
+    void AnimTermino()
+    {
+        speed = 2.5f;
+    } 
+
+    public void NaoTrocarAngulo()
+    {
+       speed = 0f;
+    }
+
+    void animTumulo()
+    {
+        aanimTumulo.SetTrigger("covaDestruida");
     }
 
 

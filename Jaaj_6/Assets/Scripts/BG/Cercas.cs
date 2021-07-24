@@ -20,7 +20,7 @@ public class Cercas : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
 
         if (onRadiuos)
@@ -37,12 +37,8 @@ public class Cercas : MonoBehaviour
         {
             anim.SetTrigger("PazadaT");
             player_variavel.speed = 0;
-            //Debug.Log("Sla");
         }
-        else if (!Input.GetKeyDown(KeyCode.Space) && onRadiuos)
-        {
-            player_variavel.speed = 2.5f;
-        }
+        
             
         
         
@@ -68,5 +64,13 @@ public class Cercas : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, radious);
+    }
+
+
+    void Destroy()
+    {
+        spaceButao.SetActive(false);
+        gameObject.SetActive(false);
+        Debug.Log("tumulo foi de base");
     }
 }
