@@ -9,7 +9,7 @@ public class Cercas : MonoBehaviour
     public GameObject spaceButao;
     public GameObject player;
     public Animator anim;
-    public LayerMask playerLayer;
+    public LayerMask paLayer;
     public float radious;
     bool onRadiuos;
     // Start is called before the first frame update
@@ -43,6 +43,8 @@ public class Cercas : MonoBehaviour
         {
             player_variavel.speed = 2.5f;
         }
+            
+        
         
     }
 
@@ -53,7 +55,7 @@ public class Cercas : MonoBehaviour
     }
     public void Interact()
     {
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, radious, playerLayer);
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, radious, paLayer);
         if (hit != null)
         {
            onRadiuos = true;
