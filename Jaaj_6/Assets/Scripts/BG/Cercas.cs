@@ -6,6 +6,7 @@ using UnityEngine;
 public class Cercas : MonoBehaviour
 {
     private Player player_variavel;
+    public GameObject spaceButao;
     public GameObject player;
     public Animator anim;
     public LayerMask playerLayer;
@@ -22,15 +23,24 @@ public class Cercas : MonoBehaviour
     void Update()
     {
 
+        if (onRadiuos)
+        {
+            spaceButao.SetActive(true);
+        }
+        else if (!onRadiuos)
+        {
+            spaceButao.SetActive(false);
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Space) && onRadiuos)
         {
-            anim.SetBool("Pazada", true);
+            anim.SetTrigger("PazadaT");
             player_variavel.speed = 0;
             //Debug.Log("Sla");
         }
         else if (!Input.GetKeyDown(KeyCode.Space) && onRadiuos)
         {
-            anim.SetBool("Pazada", false);
             player_variavel.speed = 2.5f;
         }
         
