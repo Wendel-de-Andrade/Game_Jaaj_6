@@ -21,13 +21,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (speed == 0)
-        {
-            NaoTrocarAngulo();
-        }
-        else if (speed >= 0.1)
+        if (speed >= 0.1f)
         {
             Move();
+        }
+        else
+        {
+            NaoTrocarAngulo();
         }
 
 
