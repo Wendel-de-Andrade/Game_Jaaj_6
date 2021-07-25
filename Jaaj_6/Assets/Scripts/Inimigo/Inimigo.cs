@@ -10,6 +10,8 @@ public class Inimigo : MonoBehaviour
     public bool ladoDireito = false;
     private Transform alvo;
     public bool seguir = true;
+
+    public float vida;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,14 @@ public class Inimigo : MonoBehaviour
         if ((transform.position.x - alvo.position.x) > 0 && ladoDireito)
         {
             vire();
+        }
+
+
+
+        //VIDA
+        if (vida <= 0f)
+        {
+            Destroy(gameObject);
         }
     }  
 

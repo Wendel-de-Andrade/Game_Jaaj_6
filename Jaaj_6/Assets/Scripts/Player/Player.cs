@@ -10,12 +10,22 @@ public class Player : MonoBehaviour
     private Animator aanimTumulo;
     public GameObject tumulo;
 
+    //attack
+    public Transform attackCheck;
+    public LayerMask layerEnemy;
+    public float radiusAttack;
+    float timeNextAttack;
+    private Inimigo inimigo_variavel;
+    public GameObject inimigo;
+    public float dano;
+
     // Start is called before the first frame update
     void Start()
     {
         aanimTumulo = tumulo.GetComponent<Animator>();
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
+        inimigo_variavel = inimigo.GetComponent<Inimigo>();
     }
 
     // Update is called once per frame
@@ -37,6 +47,19 @@ public class Player : MonoBehaviour
         {
             anim.SetTrigger("AttackFRACO");
         }
+        if (timeNextAttack <= 0)
+        {
+            if (Input.GetButtonDown ("Fire1") && rig.velocity == new Vector2 (0, 0))
+            {
+                anim.SetTrigger("AttackFRACO");
+                timeNextAttack = 0.4f;
+                //PlayerAttack ();
+            }
+        }   else
+            {
+                timeNextAttack -= Time.deltaTime;
+            }
+
 
     }
     
@@ -93,6 +116,31 @@ public class Player : MonoBehaviour
     void Voltar_Idle()
     {
         anim.SetBool("Idle", true);
+    }
+
+    void Flip()
+    {
+        attackCheck.localPosition = new Vector2 (-attackCheck.localPosition.x, attackCheck.localPosition.y);
+    }
+
+    void PlayerAttack()
+    {
+        Collider2D[] enemiesAttack = Physics2D.OverlapCircleAll (attackCheck.position, radiusAttack, layerEnemy);
+        for (int i = 0; i < enemiesAttack.Length; i++) 
+        {
+            Debug.Log (enemiesAttack [i] .name);
+            inimigo_variavel.vida -= dano;
+           //enemiesAttack [i].SendMessage ("EnemyHit", "-6");
+
+                
+        }  
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackCheck.position, radiusAttack);
+
     }
 
 

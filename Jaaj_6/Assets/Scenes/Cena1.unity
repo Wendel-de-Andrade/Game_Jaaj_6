@@ -406,7 +406,6 @@ GameObject:
   - component: {fileID: 187634164}
   - component: {fileID: 187634161}
   - component: {fileID: 187634163}
-  - component: {fileID: 187634165}
   m_Layer: 3
   m_Name: PLAYER
   m_TagString: Player
@@ -448,18 +447,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.22809821, y: 0.04611799}
+  m_Offset: {x: -0.12, y: -0.046922714}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.875, y: 1.71875}
+    pivot: {x: 0.2678005, y: 0.5}
+    oldSize: {x: 2, y: 1.71875}
     newSize: {x: 1.375, y: 1.71875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.40277922, y: 0.44098872}
+  m_Size: {x: 0.40277922, y: 0.6270701}
   m_EdgeRadius: 0
 --- !u!61 &187634163
 BoxCollider2D:
@@ -474,11 +473,11 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2826898, y: -0.79241526}
+  m_Offset: {x: -0.17, y: -0.79241526}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.875, y: 1.71875}
+    pivot: {x: 0.2678005, y: 0.5}
+    oldSize: {x: 2, y: 1.71875}
     newSize: {x: 1.375, y: 1.71875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -500,25 +499,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15054014, y: 0.5359584}
+  m_Offset: {x: -0.05, y: 0.5359584}
   serializedVersion: 2
   m_Radius: 0.32114097
---- !u!58 &187634165
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187634160}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.48342925, y: -0.5271429}
-  serializedVersion: 2
-  m_Radius: 0.1830894
 --- !u!114 &187634166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -634,6 +617,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2.5
   tumulo: {fileID: 341661171}
+  attackCheck: {fileID: 1195356859}
+  layerEnemy:
+    serializedVersion: 2
+    m_Bits: 256
+  radiusAttack: 0.33
+  inimigo: {fileID: 1114298520}
+  dano: 0.5
 --- !u!1 &252135191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,7 +1630,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636828929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.389, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 187634168}
@@ -1659,7 +1649,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.48342925, y: -0.5271429}
+  m_Offset: {x: 0.25, y: -0.5271429}
   serializedVersion: 2
   m_Radius: 0.1830894
 --- !u!1 &711546163
@@ -2404,7 +2394,7 @@ GameObject:
   - component: {fileID: 1114298522}
   - component: {fileID: 1114298526}
   - component: {fileID: 1114298523}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: INIMIGO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2419,8 +2409,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114298520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.94, y: -0.738, z: 0}
-  m_LocalScale: {x: -1.668285, y: 1.6682854, z: 1.6682854}
+  m_LocalPosition: {x: 0.947, y: -0.6438, z: 0}
+  m_LocalScale: {x: -1.8509623, y: 1.8509628, z: 1.8509628}
   m_Children: []
   m_Father: {fileID: 711546164}
   m_RootOrder: 3
@@ -2579,6 +2569,7 @@ MonoBehaviour:
   distanciaParar: 2.5
   ladoDireito: 0
   seguir: 1
+  vida: 1
 --- !u!1 &1159683845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,7 +2677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195356858}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.322, y: 0.215, z: 0}
+  m_LocalPosition: {x: 0.866, y: 0.248, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 187634168}
