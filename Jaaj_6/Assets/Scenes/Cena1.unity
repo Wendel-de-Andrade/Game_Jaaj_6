@@ -327,7 +327,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 449e50116ab7c084f83f1864f5e42e9f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2155,7 +2155,7 @@ Transform:
   m_GameObject: {fileID: 1114298520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.94, y: -0.738, z: 0}
-  m_LocalScale: {x: 1.6682854, y: 1.6682854, z: 1.6682854}
+  m_LocalScale: {x: -1.668285, y: 1.6682854, z: 1.6682854}
   m_Children: []
   m_Father: {fileID: 711546164}
   m_RootOrder: 3
@@ -2192,7 +2192,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05361259, y: -0.4905971}
+  m_Offset: {x: -0.045158133, y: -0.35792124}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2203,7 +2203,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3299332, y: 0.01976091}
+  m_Size: {x: 0.53639233, y: 0.31187057}
   m_EdgeRadius: 0
 --- !u!212 &1114298525
 SpriteRenderer:
@@ -2284,7 +2284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d55bad2d8d176284587d8f9a5f5d7247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 2
+  distanciaParar: 2.5
+  ladoDireito: 0
+  seguir: 1
 --- !u!1 &1159683845
 GameObject:
   m_ObjectHideFlags: 0

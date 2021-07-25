@@ -6,19 +6,50 @@ public class Inimigo : MonoBehaviour
 {
     private Animator anim;
     public float speed;
-    private Transform target;
+    public float distanciaParar;
+    public bool ladoDireito = false;
+    private Transform alvo;
+    public bool seguir = true;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
 
-        //target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        alvo = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        if (Vector2.Distance(transform.position, alvo.position) > distanciaParar)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(alvo.position.x, transform.position.y), speed * Time.deltaTime);
+            seguir = true;
+            anim.SetBool("WalkE", seguir);
+        }
+        else
+        {
+            seguir = false;
+            anim.SetBool("WalkE", seguir);
+
+        }
+
+        if ((transform.position.x - alvo.position.x) < 0 && !ladoDireito)
+        {
+            vire();
+        }
+
+        if ((transform.position.x - alvo.position.x) > 0 && ladoDireito)
+        {
+            vire();
+        }
     }  
+
+    void vire()
+    {
+        ladoDireito =! ladoDireito;
+        Vector2 novoScale = new Vector2(transform.localScale.x * - 1, transform.localScale.y);
+        transform.localScale = novoScale;
+    }
 
 }
