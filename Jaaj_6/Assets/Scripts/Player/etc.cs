@@ -6,10 +6,13 @@ public class etc : MonoBehaviour
 {
     public GameObject alma;
     public GameObject inimigo;
+    private Rigidbody2D rig;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = inimigo.GetComponent<Animator>();
+        rig = inimigo.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -26,5 +29,15 @@ public class etc : MonoBehaviour
     void Inimigo()
     {
         inimigo.SetActive(true);
+    }
+
+    void DesabilitandoRB()
+    {
+        //rig.enabled = !rig.enabled;
+    }
+
+    void FimDa_anim()
+    {
+        anim.SetBool("idle", true);
     }
 }
