@@ -30,6 +30,14 @@ public class Player : MonoBehaviour
             Move();
         }
 
+
+
+        //ATTACK
+        if (Input.GetButtonDown("Fire1"))
+        {
+            anim.SetTrigger("AttackFRACO");
+        }
+
     }
     
     public void Move()
@@ -80,6 +88,11 @@ public class Player : MonoBehaviour
     void animTumulo()
     {
         aanimTumulo.SetTrigger("covaDestruida");
+    }
+
+    void Voltar_Idle()
+    {
+        anim.SetBool("Idle", true);
     }
 
 

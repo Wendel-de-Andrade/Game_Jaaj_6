@@ -31,13 +31,9 @@ public class etc : MonoBehaviour
         inimigo.SetActive(true);
     }
 
-    void DesabilitandoRB()
-    {
-        //rig.enabled = !rig.enabled;
-    }
-
     void FimDa_anim()
     {
-        anim.SetBool("idle", true);
+        //anim.SetBool("Idle", true);
     }
+
 }
