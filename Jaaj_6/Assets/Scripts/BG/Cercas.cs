@@ -36,7 +36,8 @@ public class Cercas : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && onRadiuos)
         {
             anim.SetTrigger("PazadaT");
-            player_variavel.speed = 0;
+            //player_variavel.speed = 0;
+            player_variavel.GetComponent<Rigidbody2D>().velocity = Vector2.zero;;
         }
         
             

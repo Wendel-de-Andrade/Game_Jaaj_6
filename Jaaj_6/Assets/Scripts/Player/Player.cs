@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (speed >= 0.1f)
+        if (speed > 0)
         {
             Move();
         }
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
             NaoTrocarAngulo();
         }
 
-
+        Debug.Log(rig.velocity);
 
         //ATTACK
         if (Input.GetButtonDown("Fire1"))
@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown ("Fire1") && rig.velocity == new Vector2 (0, 0))
             {
                 anim.SetTrigger("AttackFRACO");
-                timeNextAttack = 0.4f;
+                timeNextAttack = 0.2f;
                 //PlayerAttack ();
             }
         }   else
@@ -105,7 +105,11 @@ public class Player : MonoBehaviour
 
     public void NaoTrocarAngulo()
     {
-       speed = 0f;
+       GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+    }
+    public void Speed_0()
+    {
+       speed = 0;
     }
 
     void animTumulo()
