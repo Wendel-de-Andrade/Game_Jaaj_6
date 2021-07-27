@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [Header("Settings")]
     private Rigidbody2D rig;
     public float speed;
     private Animator anim;
     private Animator aanimTumulo;
     public GameObject tumulo;
+    //public float vida;
 
-    //attack
+    [Header("Attack")]
     public Transform attackCheck;
     public LayerMask layerEnemy;
     public float radiusAttack;
@@ -19,6 +22,11 @@ public class Player : MonoBehaviour
     public GameObject inimigo;
     public float dano;
 
+    [Header("Vida")]
+    public int maxHealth = 100;
+    public int curretHealfh;
+    public HealthBar healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +34,10 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
         inimigo_variavel = inimigo.GetComponent<Inimigo>();
+
+        //VIDA
+        curretHealfh = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -52,7 +64,7 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown ("Fire1") && rig.velocity == new Vector2 (0, 0))
             {
                 anim.SetTrigger("AttackFRACO");
-                timeNextAttack = 0.2f;
+                timeNextAttack = 0.0f;
                 //PlayerAttack ();
             }
         }   else
@@ -61,6 +73,26 @@ public class Player : MonoBehaviour
             }
 
 
+
+        //VIDA
+        /*if (vida == 0)
+        {
+            Destroy(gameObject);
+        }*/
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(1);
+        }
+
+
+    }
+
+    void TakeDamage(int damage)
+    {
+        curretHealfh -= damage;
+
+        healthBar.SetHealth(curretHealfh);
     }
     
     public void Move()
