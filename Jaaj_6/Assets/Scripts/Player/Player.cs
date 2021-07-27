@@ -27,6 +27,12 @@ public class Player : MonoBehaviour
     public int curretHealfh;
     public HealthBar healthBar;
 
+    [Header("Attack")]
+    public Transform bulletSpawn1;
+    public float fireRate;
+    private float nextFire;
+    public GameObject bulletObject1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,14 +81,22 @@ public class Player : MonoBehaviour
 
 
         //VIDA
-        /*if (vida == 0)
+        if (curretHealfh == 0)
         {
             Destroy(gameObject);
-        }*/
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TakeDamage(1);
+        }
+
+
+          //FIRE
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Time.time > nextFire)
+        {
+            
+            Fire1();
         }
 
 
@@ -179,7 +193,12 @@ public class Player : MonoBehaviour
 
     }
 
+       void Fire1()
+    {
+        nextFire = Time.time + fireRate;
+        GameObject cloneBullet = Instantiate (bulletObject1, bulletSpawn1.position, bulletSpawn1.rotation);
 
+    }
 
 
 
